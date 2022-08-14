@@ -1,0 +1,24 @@
+package com.jparsertest;
+
+import java.util.List;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+public class Parser {
+
+    public List<Filme> parsear(String json) throws Exception{
+
+        ObjectMapper mapper = new ObjectMapper();
+        
+        List<Filme> filmes;
+
+        Items items = mapper.readValue(json, new TypeReference<Items>() {
+        });
+
+        filmes = items.getItems();
+
+        return  filmes;
+    }
+    
+}
