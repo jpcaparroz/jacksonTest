@@ -1,23 +1,17 @@
 package com.jparsertest;
 
 import java.io.File;
-import java.util.List;
-
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class App {
   public static void main(String[] args) throws Exception {
 
-    ObjectMapper mapper = new ObjectMapper();
+    Http client = new Http();
 
-    File json = new File("./imdb.json");
-    Items items = mapper.readValue(json, new TypeReference<Items>() {
-    });
+    String json = client.buscaDados("https://imdb-api.com/en/API/Top250Movies/k_h2ku7xc7");
 
-    List<Filme> filmes = items.getItems();
+    Parser parser = new Parser();
 
-    System.out.println(filmes.get(0).getFullTitle());
+    System.out.println(parser.parsear(json).get(8).getFullTitle());
 
   }
 }

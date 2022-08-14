@@ -1,5 +1,6 @@
 package com.jparsertest;
 
+import java.io.File;
 import java.util.List;
 
 import com.fasterxml.jackson.core.type.TypeReference;
